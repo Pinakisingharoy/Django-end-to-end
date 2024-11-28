@@ -2,45 +2,41 @@ Installation Steps
 1. Set up a Virtual Environment
 Open your terminal and navigate to your desired project folder:
 
-bash
-Copy code
 cd /path/to/your/projects
 Create a virtual environment:
 
-bash
-Copy code
 python -m venv env
 Activate the virtual environment:
 
 On Windows:
-bash
-Copy code
+
 env\Scripts\activate
 On macOS/Linux:
-bash
-Copy code
+
 source env/bin/activate
 Install Django:
 
-bash
-Copy code
+
 pip install django
+
+
+
+
+
+
 2. Create a Django Project
 Start a new Django project:
 
-bash
-Copy code
+
 django-admin startproject myproject
 Navigate into the project directory:
 
-bash
-Copy code
+
 cd myproject
 3. Add Your App
 Create a new Django app named myapp:
 
-bash
-Copy code
+
 python manage.py startapp myapp
 Add myapp to the INSTALLED_APPS list in myproject/settings.py:
 
@@ -50,6 +46,9 @@ INSTALLED_APPS = [
     ...
     'myapp',
 ]
+
+
+
 4. Set Up the Model
 In myapp/models.py, define the Invoice model:
 
@@ -70,8 +69,7 @@ class Invoice(models.Model):
     summary = models.TextField()
 Apply the model to the database:
 
-bash
-Copy code
+
 python manage.py makemigrations
 python manage.py migrate
 5. Register the Model in Admin
