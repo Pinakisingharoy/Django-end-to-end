@@ -33,6 +33,12 @@ Navigate into the project directory:
 
 
 cd myproject
+
+
+
+
+
+
 3. Add Your App
 Create a new Django app named myapp:
 
@@ -67,11 +73,20 @@ class Invoice(models.Model):
     product = models.CharField(max_length=200)
     price = models.CharField(max_length=200)
     summary = models.TextField()
-Apply the model to the database:
 
+
+
+    
+Apply the model to the database:
 
 python manage.py makemigrations
 python manage.py migrate
+
+
+
+
+
+
 5. Register the Model in Admin
 In myapp/admin.py, register the Invoice model:
 
@@ -87,6 +102,10 @@ bash
 Copy code
 python manage.py runserver
 Visit the admin panel at http://127.0.0.1:8000/admin/, log in (create a superuser if needed), and see the Invoice model.
+
+
+
+
 
 6. Create Views and Templates
 Define views in myapp/views.py:
@@ -173,6 +192,10 @@ Copy code
     {% endfor %}
 </body>
 </html>
+
+
+
+
 7. Run the Application
 Start the development server:
 
