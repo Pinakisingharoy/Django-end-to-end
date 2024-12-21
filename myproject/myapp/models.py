@@ -9,6 +9,8 @@ class Invoice(models.Model):
     phone=models.CharField(max_length=50,default="phone")
     price=models.CharField(max_length=50,default="price")
     total=models.CharField(max_length=78,default="total")
+    image=models.ImageField(upload_to='image/',default="image")
     description=models.TextField(default="Default description")
+
 
 

@@ -13,8 +13,9 @@ def abc(request):
         address=request.POST.get("address","")
         phone=request.POST.get("phone","")
         price=request.POST.get("price","")
+        image=request.POST.get("image","")
         description=request.POST.get("description","")
-        pinaki=Invoice(name=name,address=address,phone=phone,price=price,description=description)
+        pinaki=Invoice(name=name,address=address,phone=phone,price=price,image=image,description=description)
         pinaki.save()
 
     return render (request,"myapp/hello.html")
@@ -27,6 +28,7 @@ def update(request,id):
         sayan.address=request.POST.get("address","")
         sayan.phone=request.POST.get("phone","")
         sayan.price=request.POST.get("price","")
+        sayan.image=request.POST.get("image","")
         sayan.description=request.POST.get("description","")
         sayan.save()
     return render (request,"myapp/update.html")
