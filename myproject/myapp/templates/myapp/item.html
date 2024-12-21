@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: lightSkyBlue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .slider {
+            position: relative;
+            width: 300px;
+            height: auto;
+            overflow: hidden;
+        }
+
+        .slider-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .card {
+            background-color: #fff;
+            border: 2px solid red;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0;
+            width: 300px;
+            padding: 20px;
+            flex-shrink: 0;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .card p {
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .card .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .button.delete {
+            background-color: #DC3545;
+        }
+
+        .button.delete:hover {
+            background-color: #a71d2a;
+        }
+
+        .controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .control {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slider">
+        <div class="slider-container">
+            {% for i in pinaki %}
+                <div class="card">
+                    <h3>{{ i.name }}</h3>
+                    <p><strong>Address:</strong> {{ i.address }}</p>
+                    <p><strong>Phone:</strong> {{ i.phone }}</p>
+                    <p><strong>Price:</strong> {{ i.price }}</p>
+                    <p><strong>Description:</strong> {{ i.description }}</p>
+
+                    <div class="buttons">
+                        <a href="{% url 'update' i.id %}" class="button">Edit</a>
+                        <a href="{% url 'delete' i.id %}" class="button delete">Delete</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="controls">
+            <button class="control prev">&#10094;</button>
+            <button class="control next">&#10095;</button>
+        </div>
+    </div>
+
+    <script>
+        const sliderContainer = document.querySelector('.slider-container');
+        const cards = document.querySelectorAll('.card');
+        const prevButton = document.querySelector('.control.prev');
+        const nextButton = document.querySelector('.control.next');
+        let currentIndex = 0;
+
+        function updateSlider() {
+            const offset = -currentIndex * 300; // Adjust based on card width
+            sliderContainer.style.transform = `translateX(${offset}px)`;
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : cards.length - 1;
+            updateSlider();
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex < cards.length - 1) ? currentIndex + 1 : 0;
+            updateSlider();
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    {% for i in pinaki%}
+    
+        
+
+    {{i.name}}
+    {{i.address}}
+    {{i.phone}}
+    {{i.price}}
+    {{i.description}}
+
+
+
+    <a href="{% url 'update' i.id %}">
+        <button type="button">Edit</button>
+    </a>
+
+
+    <a href="{% url 'delete' i.id%}">
+        <button type="delete">delete</button>
+    </a>
+        
+    {% endfor %}
+    
+</body>
+</html> {% endcomment %}

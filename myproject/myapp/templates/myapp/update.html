@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST">
+    {%csrf_token%}
+    <div class="update-class">
+        <label for="name">name</label>
+        <input type="text" id="name" name="name">
+    </div>
+
+    <div class="update-class">
+        <label for="address">address</label>
+        <input type="text" id="address" name="address">
+
+
+    </div>
+
+    <div class="update-class">
+        <label for="phone">phone</label>
+        <input type="text" id="phone" name="phone" >
+        
+
+    </div>
+    <div class="update-class">
+        <label for="price">price</label>
+        <input type="text" id="price" name="price" >
+        
+
+    </div>
+    <div class="update-class">
+        <label for="total">total</label>
+        <input type="text" id="total" name="total" >
+        
+
+    </div>
+    <div class="update-class">
+        <label for="description">description</label>
+        <input type="text" id="description" name="description" >
+        
+
+    </div>
+
+
+   <button type="submit">Submit</button>
+
+
+    </form>
+    
+</body>
+</html>
+
+
